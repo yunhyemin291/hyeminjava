@@ -17,8 +17,12 @@ public class WhileEx2 {
 		 * 3.반복문 종료 후 : 없음
 		 */
 		
-		int num1=10000;
-		int num2=200000;
+		Scanner scan=new Scanner(System.in);
+		System.out.println("두 정수를 입력하세요 :");
+		int num1=scan.nextInt();
+		int num2=scan.nextInt();
+		scan.close();
+		
 		int cnt = 0;
 		int i;
 		i=1;

@@ -1,0 +1,38 @@
+break : 반복문을 빠져나가는 역할, 무조건 조건문과 쓰임.
+
+continue:스킵, for문에서는 증감연산식 위치로, while문에서는 조건식 위치로 이동
+
+while(조건식){
+	실행문;
+}
+
+초기화;
+while(조건식){
+	실행문;
+	증감연산식;
+}
+
+do while문은 무조건 1번은 실행된다.
+do{
+	실행문;
+}while(조건식)
+
+
+
+
+배열 - (같은 의미와)같은 자료형을 가진 변수들의 집합
+왜?
+-일반변수 5개를 이용해서는 반복문을 사용할 수 없다.
+-효율적으로 변수들을 관리하기 위해
+
+-배열 선언
+자료형[] 배열명;
+자료형 배열명[];
+
+java.lang.ArrayIndexOutOfBoundsException:Index 5 out of bounds for length 5
+
+
+int score[]=new int[5];
+
+int num1,num2,gcd,i ;
+int arr[]=new int[4];
