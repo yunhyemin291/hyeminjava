@@ -21,7 +21,7 @@ public class ForEx4 {
 		
 		for(i=1;i<=num;i++) {
 			if(num%i==0) {
-				System.out.printf(""+i+(i!=num?",":""));
+				System.out.print(""+i+(i!=num?",":""));
 			}
 		}
 		
