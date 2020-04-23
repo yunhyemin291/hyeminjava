@@ -45,6 +45,11 @@ public class ArrayEx4 {
 		}
 		
 		System.out.println();
+		
+		System.out.println();
+		
+		System.out.println("<로또번호생성기>");
+		
 		int[] ball =new int[45];
 		
 		for (int i=0;i<ball.length;i++)
@@ -53,14 +58,29 @@ public class ArrayEx4 {
 		int temp=0;
 		int j=0;
 		
-		for (int i=0;i<6;i++) {
+		for(int k=0;k<5;k++) {
+			
+			for (int i=0;i<6;i++) {
 			j=(int)(Math.random()*45);
 			temp=ball[i];
 			ball[i]=ball[j];
 			ball[j]=temp;
 		}
 		
+		System.out.println();
+		
 		for(int i=0;i<6;i++)
-			System.out.printf("ball[%d]=%d\n", i,ball[i]);
+			System.out.printf("ball[%d]=%2d | ",(i+1),ball[i]);
+			
+		}
+		
+		
+		
+		
+		System.out.println();
+		
 	}
+		
+		
 }
+
