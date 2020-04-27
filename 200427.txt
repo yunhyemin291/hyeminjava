@@ -1,0 +1,60 @@
+메서드 : 하나의 기능을 하도록 모아놓은 코드
+클래스 : 어떠한 정보를 나타내기 위해 모아놓은 코드
+ - 변수:정보를 관리
+ - 메서드:기능을 관리 -편하게 쓰기 위해
+ - 생성자:변수 초기화
+메소드와 생성자의 호출 하는 시기
+ - 메소드는 메소드를 호출할 때마다 실행
+ - 생성자는 객체를 생성할 때만 실행, 생성자는 중간에 직접 호출할 수 없다.
+
+오버로딩:동일한 이름을 가진 생성자나 메소드가 2개 이상인 경우 다음 아래를 만족하면 오버로딩,
+만족하지 않으면 에러발생
+ - 매개변수가 달라야한다.
+ 1.갯수
+ 2.자료형 
+
+클래스 변수/메서드:static
+객체 변수/메서드:static 없음
+
+-클래스 변수는 객체 매서드에서 사용 가능하다 	o
+-객체변수는 클래스 메서드에서 사용 가능하다	x
+-클래스 메서드는 객체 메서드에서 사용 가능하다	o
+-객체 메서드는 클래스 메서드에서 사용 가능하다	x
+
+
+Point{
+	private int x, y;
+	public void print(){}
+	public void move(int x1, int y1){}
+	public void setX(int x1){}
+	public int getX(){}
+
+에러 내용
+변수명 cannot be resolved to a variable
+에러 원인
+변수를 선언하지 않고 사용해서 =>변수 선언
+
+에러 내용
+The local variable 변수명 may not have been initialized
+에러 원인
+볌수를 초기화 하지 않고 값을 사용해서=> 변수 초기화
+
+에러 내용
+Duplicate local variable 변수명
+에러 원인
+변수를 중복 선언해서=>변수명 수정 또는 변수 삭제
+
+
+에러내용
+Syntax error on token "else", delete this token
+에러 원인
+if문이 ;에 의해 끝난 후 else가 온 경우
+
+에러 내용
+The left-hand side of an assignment must be a variable
+에러 상황
+else if를 써야하는데 else를 쓰고 조건물을 쓰는 경우 해당 조건문이 실행문으로 인식이 되고 따라서 왼쪽에
+변수명이 와야한다.
+=>else if를 쓰던지 또는 else의 조건문을 제거
+
+

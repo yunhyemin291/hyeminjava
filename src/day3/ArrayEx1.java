@@ -11,7 +11,7 @@ public class ArrayEx1 {
 		 * 
 		 */
 		
-		int n1,n2,n3,n4,n5;
+		//int n1,n2,n3,n4,n5;
 		Scanner scan=new Scanner(System.in);
 		/*n1=scan.nextInt();
 		n2=scan.nextInt();
@@ -20,11 +20,12 @@ public class ArrayEx1 {
 		n5=scan.nextInt();
 		*/
 		
-		int [] arr1,arr2; //arr1과 arr2는 둘다 배열
-		int arr3[],arr4; //arr3는 배열, arr4는 일반 변수
-		arr1=new int[5];
+		//int [] arr1,arr2; //arr1과 arr2는 둘다 배열
+		//int arr3[],arr4; //arr3는 배열, arr4는 일반 변수
 		
-		int[]arr5=new int[5];//배열 선언과 동시에 생성
+		//arr1=new int[5];
+		
+		int[]arr1=new int[5];//배열 선언과 동시에 생성
 		
 		for(int i=0; i<arr1.length;i++ ) {
 			arr1[i]=scan.nextInt();
