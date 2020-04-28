@@ -7,66 +7,78 @@ public class TestEx10_1 {
 	public static void main(String[] args) {
 		Scanner scan=new Scanner(System.in);
 		
-		int[] num=new int[4];
-		int[] ans=new int[4];
+		int[] com=new int[4];
+		int[] user=new int[4];
+		int num=0;
+		int count=0;
+		boolean loop;
+		
+		
 		
 		int ball=0;
 		int strike=0;
 		
-		for(int i=0;i<ans.length;i++) {
-			num[i]=(int)(Math.random()*9)+1;
-			for(int j=1;j<i;j++) {
-				if (num[i]==num[j]) {
+		
+		for(int i=0;i<com.length;i++) {
+			com[i]=(int)(Math.random()*9)+1;
+			for(int j=0;j<i;j++) {
+				if (com[i]==com[j]) {
 					i--;
 					break;
 				}
 			}
-		}
-		for (int x=0;x<5;x++) {
-			System.out.print("숫자를 입력하세요:");
-			for(int i=0;i<num.length;i++) {
-				
-				ans[i]=scan.nextInt();				
-			}
-			
-			for(int i=0;i<num.length;i++) {
-				for(int j=0;j<ans.length;j++) {
-					if(num[i]==ans[j]) {
-						if(i==j) {
-							strike++;
-						}else {
-							ball++;
-						}
-					}
-				}
-			}
-			if(ball==0 && strike==0) {
-				System.out.print("OUT");
-			}else if(ball==0 && strike!=0){
-				if(strike==ans.length){
-					System.out.println("정답입니다.");
-					break;
-				}else {
-					System.out.print(strike+"S");
-				}
-			}else if(ball!=0 && strike==0) {
-				System.out.print(ball+"B");
-			}else {
-				System.out.print(strike+"S"+ball+"B");
-			}
-			ball=0;
-			strike=0;
-			System.out.println();
-			System.out.printf("기회가 %d번 남았습니다.\n",19-x);
-			
-			if(x==5) {
-				System.out.println("패배했습니다.답은");
-				for(int y=0;y<ans.length;y++) {
-					System.out.print(num[y]);
-				}
-			}
-		}
+		}		
+		System.out.println();
+		System.out.println("****숫자 야구게임 시작****");
+		System.out.println();
+		System.out.println("-1~9사이의 정수만 입력해야합니다.");
+		System.out.println("-숫자는 중복될 수 없습니다.");
+		System.out.println("-기회는 총 10번입니다.");
+		System.out.println();
 		
-	}
-
+		loop =true;
+		while(loop) {
+			System.out.println("4자리 정수를 입력하세요 >>");
+			for(int i=0;i<user.length;i++) {
+				num=scan.nextInt();
+				user[i]=num;
+				if(num<0||num>10) {
+					System.out.println("올바른 수가 아닙니다 다시 입력하세요.");
+					continue;
+				}				
+			}
+			for (int i=0;i<com.length;i++) {
+				for(int j=0;j<(user.length);j++) {
+					if(com[i]==user[j]&&i==j) {
+						strike++;
+					}else if(com[i]==user[j]&&i!=j){
+						ball++;
+					}
+				}				
+			}
+			if(strike>=4) {
+				System.out.println();
+				System.out.println("****승리****");
+				break;
+			}
+			
+			System.out.print("> "+strike+"S "+ball+"B");
+			strike=0;
+			ball=0;
+			count++;			
+			System.out.println(" 남은기회:"+(10-count));
+			
+			System.out.println("------------------");
+			
+			if(count==10) {
+				System.out.println();
+				System.out.println("정답 :"+com[0]+com[1]+com[2]+com[3]);
+				loop=false;				
+				System.out.println("****패배****");
+			}
+			
+		}
+			
+		}
 }
+
