@@ -6,7 +6,7 @@ public class InheritaneceEX1 {
 		// TODO Auto-generated method stub
 		Child c1 = new Child();
 		c1.print2();
-		
+		c1.setD(12);
 		c1.print();
 
 	}
@@ -18,6 +18,7 @@ class Child extends Parent{
 	Point p1=new Point();
 	public void print2() {
 		System.out.printf("%d,%d\n",p1.x,p1.y);
+		System.out.printf("%d,%d\n",x,y);
 		System.out.printf("a=%d, b=%d, c=%d, d=%d, e=%d\n",a,b,c,getD(),e);
 	}
 }
@@ -25,6 +26,7 @@ class Parent{
 	public int a;
 	protected int b;
 	int c;
+	public int x,y;
 	private int d=10;
 	public void print() {
 		System.out.printf("a=%d, b=%d, c=%d, d=%d\n",a,b,c,d);

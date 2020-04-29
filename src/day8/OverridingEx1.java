@@ -9,7 +9,7 @@ public class OverridingEx1 {
 		Sparrow s=new Sparrow();
 		s.cry();
 		s.cry(0);
-		Sparrow s2=new Sparrow();
+		Sparrow s2=new Sparrow(1);
 		System.out.println(s.getWing());
 		System.out.println(s2.getWing());
 		
@@ -49,6 +49,8 @@ class Sparrow extends Bird{
 	int wing;
 	//메소드 오버로딩
 	public void cry(int num) {
+		super.cry();
+		cry();
 		System.out.println("참새:짹짹");
 	}
 	

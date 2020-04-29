@@ -78,7 +78,7 @@ public class TestEx10_1 {
 			}
 			
 		}
-			
+			scan.close();
 		}
 }
 
