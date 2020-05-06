@@ -8,53 +8,58 @@ public class TestEx10 {
 		
 		int size=3;
 		int com[] = new int [size];
+		int user[]=new int[size];
 		int min =1, max=9;
-		createArray(min,max,size,com);
-		
-			
-		printArray(com);
-		
-	
-	
-		
-		//반복 시작(3S가 나올때까지)
-		//사용자가 세 수를 입력
-		
-		//스트라이크 판별
-		
-		//볼을 판별
-		
-		//3아웃 판별
-		//반복 끝
-//		
+		int s=0 ,b=0;					
+//		printArray(com);
 		Scanner scan=new Scanner(System.in);
-		
-		int n1,n2,n3=0;
-		int numArr[] = {n1,n2,n3};
-		int strike,ball,out,count=0;
+		createArray(min,max,size,com);	
+		//반복 시작(3S가 나올때까지)
+		while(s != 3) {
+			System.out.println("세 정수를 입력하세요: ");
+			//사용자가 세 수를 입력
+			int cnt =0;
+			while(cnt<3) {
 				
-		
-		while(true) {
-			System.out.println("세 정수를 입력하세요.:");
-			int n1,n2,n3=scan.nextInt();
-			
-			
-			for(int i=0;i<3;i++) {
-				for(int j=0;j<3;j++) {
-					if(numArr[i]==arr[j]) {
-						
-					}if(i==j) {
-						strike++;
-					}else {
-						ball++;
-					}
-				}
+				user[cnt]=scan.nextInt();
+				cnt++;
 			}
-			count++;
+			//스트라이크 판별
+			s=strike(com,user);
+			if(s!=0)
+				System.out.print(s+"S");
+			//볼을 판별
+			b=ball(com,user);
+			if(b!=0)
+				System.out.print(b+"B");
+			//3아웃 판별
+			if(s==0&&b==0)
+				System.out.print("3O");
+			System.out.println();
 		}
+		System.out.println("종료!");
+		
+		scan.close();
+		
+	}		
+	public static int strike(int []com,int []user) {
+		int cnt=0;
+		for(int i=0;i<com.length;i++) {
+			if(com[i]==user[i]) {
+				cnt++;
+			}
+		}
+		return cnt;
 	}
-	
-	
+	public static int ball(int []com,int []user) {
+		int cnt=0;
+		for(int tmp:com) {
+			if(isDuplicated(user,tmp)) {
+				cnt++;
+			}
+		}
+		return cnt - strike(com,user);
+	}
 	//중복되지 않게배열3
 	/* 기능:min에서 max사이의 중복되지 않는 n개의 랜덤값을 생성하여 배열에 저장하는 메서드
 	 * 매개변수 : min에서 max, n개,배열=>int min int max, int n,int []arr
@@ -68,6 +73,7 @@ public class TestEx10 {
 	 * r 1 3 1 3 1 2
 	 * ,max - min+1>= n이면 배열 생성 가능, 아니면 배열 생성 실패
 	 * */
+	
 	public static boolean createArray(int min,int max,int n,int []arr) {
 		if(arr==null) 
 			return false;
@@ -95,12 +101,12 @@ public class TestEx10 {
 		
 	}
 	//배열출력4
-	public static void printArray(int []arr) {
-		for(int i=0;i<arr.length;i++) {
-			System.out.print(arr[i]+" ");
-		}
-		
-	}
+//	public static void printArray(int []arr) {
+//		for(int i=0;i<arr.length;i++) {
+//			System.out.print(arr[i]+" ");
+//		}
+//		
+//	}
 	//배열만듬1
 	public static boolean isDuplicated(int []arr,int num) {		
 		

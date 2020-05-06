@@ -11,13 +11,10 @@ public class TestEx10_1 {
 		int[] user=new int[4];
 		int num=0;
 		int count=0;
-		boolean loop;
-		
-		
+		boolean loop;		
 		
 		int ball=0;
-		int strike=0;
-		
+		int strike=0;		
 		
 		for(int i=0;i<com.length;i++) {
 			com[i]=(int)(Math.random()*9)+1;
