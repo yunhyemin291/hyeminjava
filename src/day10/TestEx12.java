@@ -1,5 +1,6 @@
 package day10;
 
+import java.util.Scanner;
 
 public class TestEx12 {
 
@@ -16,26 +17,64 @@ public class TestEx12 {
 		 * 4.학생정보출력
 		 * 5.종료
 		 * 메뉴를선택하세요:1*/
-		Student s =new Student();
-		s.setScore(new Subject("국어",40,40,10,10),
-				new Subject("영어",20,10,10,10),
-				new Subject("수학",20,20,10,10));
-		s.printScore();
-		
-
-//		
-//		int num=0;
-//		while(num!=5) {
-//			System.out.println("1.학생정보추가");
-//			System.out.println("2.학생정보수정");
-//			System.out.println("3.학생정보삭제");
-//			System.out.println("4.학생정보출력");
-//			System.out.println("5.종료");
-//					
-//		}
-
+		Scanner scan=new Scanner(System.in);
+		int menu =0;		
+		while(menu!=5) {
+			printMenu();
+			menu =scan.nextInt();
+			switch(menu) {
+			case 1:
+				System.out.print("이름을 입력하세요: ");
+				String name=scan.next();
+				System.out.print("학년을 입력하세요: ");
+				int grade =scan.nextInt();
+				System.out.print("반을 입력하세요: ");
+				int classNum =scan.nextInt();
+				System.out.print("번호를 입력하세요: ");
+				int num =scan.nextInt();
+				System.out.printf("> %d학년 %d반 %d번 %s\n", grade,classNum,num,name);	
+				//과목정보를입력할것인지를 묻는 안내문을 출력
+				//과목정보를 입력한다고 대답하면 몇과목 입력할것인지를 물어봄
+				//입력받은횟수만큼 과목명,중간,기말,수행평가,출석점수를 입력
+				break;
+				
+			case 2:
+				System.out.println("학생정보 수정기능");
+				//수정할학생의 학년,반,번호를 입력받음
+				//검색해서 없으면 없다고하고 종료
+				//있으면 학생의 수정할 이름을 입력하고
+				//과목을 수정할지 추가할지 그냥 넘어갈지를 물음
+				//과목을 수정한다고 선택하면 과목명을 입력해서 검색
+				//없으면 종료, 있으면 중간,기말, 수행평가,출석점수를 입력
+				//과목을 추가한다고 했으면 추가할 과목의 과목명과 정보를 입력
+				System.out.println("수정할 학생이름을 입력하세요: ");
+				break;
+			case 3:
+				System.out.println("학생정보 삭제기능");
+				System.out.println("삭제할 학생이름을 입력하세요: ");
+				break;
+			case 4:
+				System.out.println("학생정보 출력기능");
+				
+				System.out.println("출력할 학생이름을 입력하세요: ");
+				break;
+			case 5:
+				System.out.println("프로그램을 종료합니다.");
+				break;
+			default:
+				System.out.println("잘못된 메뉴 입니다.");
+			}
+		}
 	}
-
+	public static void printMenu() {
+		System.out.println("-------메뉴-------");
+		System.out.println("1.학생정보 추가");
+		System.out.println("2.학생정보 수정");
+		System.out.println("3.학생정보 삭제");
+		System.out.println("4.학생정보 출력");
+		System.out.println("5.프로그램 종료");
+		System.out.println("메뉴를 선택하세요 : ");
+	}
 }
 /* 1.데이터 관리를 위한 작업
  * 	=>변수나 클래스를 이용
