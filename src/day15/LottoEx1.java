@@ -28,20 +28,19 @@ public class LottoEx1 {
 			}
 			
 			//맞은갯수
-			int count = 0;
 			int rank =rank(lotto,bonus,auto);
-			while(rank!=1) {
-				printArray(lotto);
-				System.out.println(" 보너스: "+bonus);		
-				printArray(auto);
-				System.out.println();
-				if(rank!=-1) {
-					System.out.println("> "+rank+"등 당첨!");
-				}else {
-					System.out.println("> 꽝!");
-				}
-				System.out.println("횟수: "+count++);
+			
+			printArray(lotto);
+			System.out.println(" 보너스: "+bonus);		
+			printArray(auto);
+			System.out.println();
+			if(rank!=-1) {
+				System.out.println("> "+rank+"등 당첨!");
+			}else {
+				System.out.println("> 꽝!");
 			}
+		
+				
 		} catch (NullPointerException e) {
 			System.out.println(e.getMessage());
 		} catch (Exception e) {
