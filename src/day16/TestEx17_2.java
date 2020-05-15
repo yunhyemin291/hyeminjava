@@ -2,28 +2,38 @@ package day16;
 
 import java.util.*;
 
-public class TestEx17_1 {
-
+public class TestEx17_2 {
 	public static void main(String[] args) {
-		// 1.컴퓨터가 생성한 랜덤한 수를 저장하는 리스트:com
-		List<Integer> com=new ArrayList<Integer>();		
-		// 2.사용자가 입력한 수를 저장하는 리스트:user
-		List<Integer> user=new ArrayList<Integer>();
-		int size=3;
-		int min=1,max=9;
-		// 3.중복되지않은 랜덤한 수 3개를 com에 저장
-		com=createRandomList(size,min,max);
-		//System.out.println(com);
+		BaseballGame.set(1, 20);
+		BaseballGame.play();
+	}
+}
+class BaseballGame{
+	static int min=1,max=9;
+	static int strike=0,ball=0;
+	static int size=3;
+	static List<Integer>user = new ArrayList<Integer>();
+	static List<Integer>com = new ArrayList<Integer>();
+	
+	public static void set(int min1,int max1) {
+		min=min1;
+		max=max1;
+				
+	}
+
+	public static void play() {
+		
+		com=createRandomList();
 		// 4. 사용자가 세 수를 입력하여 맞출때까지 반복
 		// 4-1.스트라이크의 갯수가 3개가 될때까지 반복
-		int strike=0, ball=0;
+
 		Scanner scan=new Scanner(System.in);
 		while(strike!=size) {
 			// 4-2.정수 세 개를 입력받아 중복된 내용이 있으면 다시 입력 받게함
 			user.clear();
 			
 			//중복된 숫자가 있는 경우
-			if(!insertUser(scan,min,max,user,size)) {
+			if(!insertUser(scan)) {
 				System.out.printf("입력한 숫자중에 중복된 숫자가 있거나 입력된 숫자가 %d~%d사이의 숫자가 아닙니다.\n",min,max);
 				continue;
 			}
@@ -32,31 +42,33 @@ public class TestEx17_1 {
 			strike=0;
 			ball=0;
 			for(int i=0;i<com.size();i++) {
-				if(com.get(i)==user.get(i)) {
+				if(com.get(i)==user.get(i))
 					strike++;
-				}
-				if(com.contains(user.get(i))) {
+				if(com.contains(user.get(i)))
 					ball++;
-				}
 			}
 			ball=ball-strike;
 			// 4-4.판별한 스트라이크와 볼을 이용하여 출력
-			if(strike!=0) {
+			if(strike!=0) 
 				System.out.print(strike+"S");
-			}
-			if(ball!=0) { 
+			
+			if(ball!=0) 
 				System.out.print(ball+"B");	
-			}	
-			if(strike==0 && ball==0) {
+				
+			if(strike==0 && ball==0) 
 				System.out.print("3O");	
-			}
+			
 			System.out.println();
 			
 		}
-		System.out.println("정답입니다.");
 				
 	}
 	public static int random(int min,int max) {
+		if(max<min)
+			throw new ArithmeticException("예외발생 : 최대값과 최소값 순서가 바뀌었습니다.");
+		return new Random().nextInt(max-min+1)+min;
+	}
+	private static int random() {
 		if(max<min)
 			throw new ArithmeticException("예외발생 : 최대값과 최소값 순서가 바뀌었습니다.");
 		return new Random().nextInt(max-min+1)+min;
@@ -66,12 +78,12 @@ public class TestEx17_1 {
 	 * 리턴타입:랜덤한 수가 저장된 리스트=>List<Integer>
 	 * 메소드명:createRandomList
 	 * */
-	public static List<Integer> createRandomList(int size,int min,int max){
+	public static List<Integer> createRandomList(){
 		if(size>max-min+1)
 			throw new ArithmeticException("예외 발생: 랜덤 범위보다 만들어야 하는 갯수가 더 많습니다.");
 		List<Integer> list =new ArrayList<Integer>();
 		while(list.size()<size) {
-			int r=random(min,max);
+			int r=random();
 			if(!list.contains(r)) {
 				list.add(r);
 			}
@@ -84,9 +96,9 @@ public class TestEx17_1 {
 	 * 리턴타입:boolean
 	 * 메서드명:insertUser
 	 * */
-	public static boolean insertUser(Scanner scan,int min,int max,List<Integer> user,int size) {
+	private static boolean insertUser(Scanner scan) {
+		System.out.print("중복되지 않은 숫자 "+size+"개를 입력하세요("+min+"~"+max+"): ");
 		int i=0;
-		System.out.print("중복되지 않은 숫자 3개를 입력하세요(1~9): ");
 		while(i++<size) {
 			user.add(scan.nextInt());
 		}
